@@ -1,0 +1,15 @@
+<?php
+include('login.php');
+session_start(); 
+$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
+?>
+
+<!DOCTYPE html>
+<html>
+This is a library system.
+<form action="login.php" method="post"> 
+<p>Username: <input type="text" name="username"> </p>
+<p>Password: <input type="password" name="password"> </p>
+<p> <input type="submit"> </p>
+</form>
+</html>
