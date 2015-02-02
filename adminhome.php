@@ -1,7 +1,13 @@
 <?php 
-include('login.php');
-session_start(); 
-$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
-
-echo "admin home" 
+	
 ?>
+
+<html>
+<body>
+	<p>Users</p>
+	<ul>
+		<li>Create User</li>
+		<li><a href="viewusers.php">View Users</a></li>
+	</ul>
+</body>
+</html>

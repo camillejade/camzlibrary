@@ -1,8 +1,4 @@
-	<?php 
-
-	include('login.php');
-	session_start(); 
-	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
+<?php 
 
 	if($_SERVER['REQUEST_METHOD']=='POST')
 	{
@@ -43,6 +39,11 @@
 				header("Location :userhome.php");
 				//echo "Hello, " . $row['username'];
 			}
+			else if($row['usertype']=="librarian")
+			{
+				header("Location :librarianhome.php");
+				//echo "Hello, " . $row['username'];
+			}
 
 		}
 	}
@@ -54,6 +55,5 @@
 	mysqli_close($conn);
 
 }
-
-	?>
+?>
 	
