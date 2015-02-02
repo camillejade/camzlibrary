@@ -36,12 +36,12 @@
 			}
 			else if($row['usertype']=="user")
 			{
-				header("Location :userhome.php");
+				header("Location: userhome.php");
 				//echo "Hello, " . $row['username'];
 			}
 			else if($row['usertype']=="librarian")
 			{
-				header("Location :librarianhome.php");
+				header("Location: librarianhome.php");
 				//echo "Hello, " . $row['username'];
 			}
 
