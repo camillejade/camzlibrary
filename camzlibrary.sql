@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2015 at 09:00 AM
+-- Generation Time: Feb 02, 2015 at 04:47 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lname` varchar(30) NOT NULL,
   `address` varchar(50) NOT NULL,
   `contact` varchar(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `usertype` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
@@ -75,10 +76,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `fname`, `mname`, `lname`, `address`, `contact`, `usertype`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin', 'admin', '1234 admin st.', '12345678901', 'admin'),
-(2, 'camz', 'camz', 'camille', 'aguihon', 'alcantara', '1234', '12345678901', 'user'),
-(3, 'jade', 'jade', 'jade', 'asd', 'asd', 'qweq', '123', 'librarian');
+INSERT INTO `users` (`id`, `username`, `password`, `fname`, `mname`, `lname`, `address`, `contact`, `email`, `usertype`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin', 'admin', '1234 admin st.', '12345678901', '', 'admin'),
+(2, 'camz', 'camz', 'camille', 'aguihon', 'alcantara', '1234', '12345678901', '', 'user'),
+(3, 'jade', 'jade', 'jade', 'asd', 'asd', 'qweq', '123', '', 'librarian');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
