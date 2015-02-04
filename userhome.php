@@ -1,9 +1,15 @@
 <?php
-$userhere = $_POST['username'];
+session_start();
+if(!isset($_SESSION['login_user']))
+{
+header("Location:index.html");
+}
 ?>
 
 <html>
 <body>
+	<p>Hi! <?php echo $_SESSION['login_user']; ?></p>
+	<p><a href="logout.php">Logout</p>
 	<p>Profile</p>
 	<ul>
 		<li><a href='userprofile.php'>View Profile</a></li>

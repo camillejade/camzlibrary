@@ -8,6 +8,7 @@ header("Location:index.html");
 
 <html>
 <body>
-<p><a href="logout.php">Logout</a></p>
+<p>Fields cannot be empty.</p>
+<p><a href="index.php">Return to Login</a></p>
 </body>
 </html>

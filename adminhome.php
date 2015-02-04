@@ -1,9 +1,15 @@
 <?php 
-	
+session_start();
+if(!isset($_SESSION['login_user']))
+{
+header("Location:index.html");
+}
 ?>
 
 <html>
 <body>
+	<p>Hi, <?php echo $_SESSION['login_user']?></p>
+	<p><a href="logout.php">Logout</p>
 	<p>Users</p>
 	<ul>
 		<li>Create User</li>

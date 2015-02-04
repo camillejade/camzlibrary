@@ -41,8 +41,6 @@ if(isset($_POST['delete']))
 	}
 }
 
-
-
 echo "</table>";
 mysqli_close($conn);
 ?>
