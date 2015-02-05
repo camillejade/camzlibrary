@@ -1,3 +1,37 @@
-<?php
-echo "user books";
+<?php 
+session_start();
+if(!isset($_SESSION['login_user']))
+{
+header("Location:index.html");
+}
+
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'camzlibrary';
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if(!$conn)
+{
+	die("Connection failed". mysql_connect_error);
+}
+
+$sql = "SELECT * FROM books";
+$result = mysqli_query($conn, $sql);
+
+echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th>";
+
+if(mysqli_num_rows($result)>0)
+{
+	while($row = mysqli_fetch_assoc($result))
+	{
+
+		echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td></tr>";
+	}
+}
+
+echo "</table>";
+echo "<a href='userhome.php'>Back</a>";
+mysqli_close($conn);
 ?>

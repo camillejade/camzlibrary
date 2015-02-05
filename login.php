@@ -5,7 +5,7 @@ session_start();
 	{	
 		if(empty($_POST['username'])	|| empty($_POST['password']))
 		{
-		header("Location: index.php");
+		header("Location: index.html");
 		}
 		else if(isset($_POST['login']))
 		{
@@ -63,14 +63,8 @@ session_start();
 		else
 		{
 			echo "Invalid username/password.";
-		}
-		
-
+		}		
 		mysqli_close($conn);
-		}
-		else if(isset($_POST['register']))
-		{
-		header("Location: register.php");
 		}
 }
 ?>

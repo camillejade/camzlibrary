@@ -9,7 +9,7 @@ $servername = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'camzlibrary';
-$userhere = $_POST['username'];
+$userhere = $_SESSION['login_user'];
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -35,4 +35,6 @@ if(mysqli_num_rows($result)>0)
 	}
 
 }
+echo "</table>";
+echo "<a href='userhome.php'>Back</a>";
 ?>
