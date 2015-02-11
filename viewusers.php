@@ -20,33 +20,31 @@ if(!$conn)
 $sql = "SELECT * FROM users";
 $result = mysqli_query($conn, $sql);
 
-echo "<table border='1'><th>#</th><th>Username</th><th>First Name</th>";
+echo "<table border='2'><th>Username</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Address</th>
+<th>Contact</th>
+<th>Email</th>";
 
 if(mysqli_num_rows($result)>0)
 {
 	while($row = mysqli_fetch_assoc($result))
 	{
 
-		echo "<tr><td><input name='checkbox[]' type='checkbox' id='checkbox[]' value='".$row['id']."'></td><td>".$row['username']."</td><td>".$row['fname']."</td></tr>";
+		echo "<tr><td>".$row['username']."</td>
+		<td>".$row['fname']."</td>
+		<td>".$row['lname']."</td>
+		<td>".$row['address']."</td>
+		<td>".$row['contact']."</td>
+		<td>".$row['email']."</td>
+		<td><a href=updateusers.php?id=".$row['id'].">Update</a></td>
+		<td><a href=deleteuser.php?id=".$row['id'].">Delete</a></td></tr>";
 	}
-
-	echo "<tr><td><input name='delete' type='submit' value='delete' id='delete'></td></tr>";
-}
-
-if(isset($_POST['delete']))
-{
-	for($i=0; $i<mysqli_num_rows($result);$i++)
-	{
-		$del_id = $checkbox[$i];
-		$sql2 = "DELETE FROM users WHERE id=$del_id";
-		$result2 = mysqli_query($conn, $sql2);
-		if($result2)
-		{
-			echo "<meta http-equiv=\"refresh\" content=\"0; URL=viewusers.php\">";
-		}
-	}
+	
 }
 
 echo "</table>";
+echo "<a href='adminhome.php'>Back to Home</a>";
 mysqli_close($conn);
 ?>

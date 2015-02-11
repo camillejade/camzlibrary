@@ -16,11 +16,11 @@ header("Location:index.html");
 	</ul>
 	<p>Books</p>
 	<ul>
-		<li><a href='userbooks.php'>Search Books</a></li>
+		<li><a href='userbooks.php'>View Books</a></li>
 	</ul>
 	<p>Account</p>
 	<ul>
-		<li><a href='useraccount.php'>Account Details</li>
+		<li><a href='useraccount.php'>Account/Fine Details</li>
 	</ul>
 </body>
 </html>
