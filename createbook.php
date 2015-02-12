@@ -1,11 +1,6 @@
 <?php 
-session_start();
-if(!isset($_SESSION['login_user']))
-{
-header("Location:index.html");
-}
+include('session.php');
 ?>
-
 
 <table width="400" border="0" cellspacing="1" cellpadding="0">
  <tr>

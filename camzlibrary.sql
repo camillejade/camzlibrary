@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2015 at 04:47 PM
+-- Generation Time: Feb 12, 2015 at 10:31 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -33,8 +33,17 @@ CREATE TABLE IF NOT EXISTS `books` (
   `pubdate` date NOT NULL,
   `availability` varchar(5) NOT NULL,
   `copies` int(3) NOT NULL,
-  PRIMARY KEY (`bookid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`bookid`),
+  UNIQUE KEY `title` (`title`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`bookid`, `title`, `author`, `pubdate`, `availability`, `copies`) VALUES
+(1, 'abc', 'abcdef', '2015-02-04', 'yes', 4),
+(3, 'q', 'q', '2012-01-01', 'yes', 2);
 
 -- --------------------------------------------------------
 
@@ -43,13 +52,23 @@ CREATE TABLE IF NOT EXISTS `books` (
 --
 
 CREATE TABLE IF NOT EXISTS `borrowlog` (
-  `id` int(15) NOT NULL,
-  `username` int(15) NOT NULL,
-  `title` int(30) NOT NULL,
+  `id` int(15) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `bookid` int(11) NOT NULL,
+  `booktitle` varchar(30) NOT NULL,
   `duedate` date NOT NULL,
   `status` varchar(15) NOT NULL,
-  `fine` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fine` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `borrowlog`
+--
+
+INSERT INTO `borrowlog` (`id`, `userid`, `username`, `bookid`, `booktitle`, `duedate`, `status`, `fine`) VALUES
+(1, '2', 'camz', 1, 'abc', '2015-02-04', 'overdue', 1);
 
 -- --------------------------------------------------------
 
@@ -62,7 +81,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
   `fname` varchar(30) NOT NULL,
-  `mname` varchar(30) DEFAULT NULL,
   `lname` varchar(30) NOT NULL,
   `address` varchar(50) NOT NULL,
   `contact` varchar(11) NOT NULL,
@@ -70,16 +88,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `usertype` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `fname`, `mname`, `lname`, `address`, `contact`, `email`, `usertype`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin', 'admin', '1234 admin st.', '12345678901', '', 'admin'),
-(2, 'camz', 'camz', 'camille', 'aguihon', 'alcantara', '1234', '12345678901', '', 'user'),
-(3, 'jade', 'jade', 'jade', 'asd', 'asd', 'qweq', '123', '', 'librarian');
+INSERT INTO `users` (`id`, `username`, `password`, `fname`, `lname`, `address`, `contact`, `email`, `usertype`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin', '1234 admin st.', '12345678901', '', 'admin'),
+(2, 'camz', 'camz', 'camille', 'alcantara', '1234', '12345678901', '', 'user'),
+(3, 'jade', 'jade', 'jadeadasdas', 'lname', 'qweq', '123', 'emaildasdasdas', 'librarian'),
+(6, 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'user'),
+(7, 'd', 'pass', 'd', 'd', 'd', 'd', 'd', ''),
+(9, 'e', 'pass', 'e', 'e', 'e', 'e', 'e', ''),
+(12, 'f', 'pass', 'f', 'f', 'f', 'f', 'f', ''),
+(13, 'w', 'pass', 'wewew', 'w', 'w', 'w', 'w', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

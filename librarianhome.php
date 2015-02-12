@@ -1,13 +1,11 @@
 <?php
-session_start();
-if(!isset($_SESSION['login_user']))
-{
-header("Location:index.html");
-}
+include('session.php');
+include('connect.php');
 ?>
 
 <html>
 <body>
+Hello! 
 <p><a href="logout.php">Logout</a></p>
 </body>
 </html>

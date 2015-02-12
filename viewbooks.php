@@ -1,24 +1,9 @@
 <?php 
-session_start();
-if(!isset($_SESSION['login_user']))
-{
-header("Location:index.html");
-}
-
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'camzlibrary';
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if(!$conn)
-{
-	die("Connection failed". mysql_connect_error);
-}
+include('session.php');
+include('connect.php');
 
 $sql = "SELECT * FROM books";
-$result = mysqli_query($conn, $sql);
+$result = mysql_query($sql);
 
 echo "<table border='2'><th>Title</th>
 <th>Author</th>
@@ -26,11 +11,10 @@ echo "<table border='2'><th>Title</th>
 <th>Availability</th>
 <th>Copies</th>";
 
-if(mysqli_num_rows($result)>0)
+if(mysql_num_rows($result)>0)
 {
-	while($row = mysqli_fetch_assoc($result))
+	while($row = mysql_fetch_assoc($result))
 	{
-
 		echo "<tr><td>".$row['title']."</td>
 		<td>".$row['author']."</td>
 		<td>".$row['pubdate']."</td>
@@ -39,10 +23,9 @@ if(mysqli_num_rows($result)>0)
 		<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
 		<td><a href=deletebook.php?bookid=".$row['bookid'].">Delete</a></td></tr>";
 	}
-	
 }
 
 echo "</table>";
 echo "<a href='adminhome.php'>Back to Home</a>";
-mysqli_close($conn);
+mysql_close($conn);
 ?>

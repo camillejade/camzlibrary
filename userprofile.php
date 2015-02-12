@@ -1,45 +1,63 @@
 <?php
-session_start();
-if(!isset($_SESSION['login_user']))
-{
-header("Location:index.html");
-}
 
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'camzlibrary';
-$userhere = $_SESSION['login_user'];
+include('session.php');
+include('connect.php');
 
 echo "<html><body>User Profile";
 echo "<form action='userprofile.php' method='post'>";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if(!$conn)
-{
-	die("Connection failed". mysql_connect_error);
-}
-
+$userhere = $_SESSION['login_user'];
 $sql = "SELECT * FROM users where username = '$userhere'";
-$result = mysqli_query($conn, $sql);
-while($row = mysqli_fetch_assoc($result))
+$result = mysql_query($sql);
+while($row = mysql_fetch_assoc($result))
 {
-  echo "<p>First Name:";
-  echo "<input type='text' id='fname' value='".$row['fname']."' /></p>";
-  echo "<p>Last Name:";
-  echo "<input type='text' id='lname' value='".$row['lname']."' /></p>";
-  echo "<p>Password:";
-  echo "<input type='password' id='lname' value='".$row['password']."' /></p>";
-  echo "<p>Address:";
-  echo "<input type='text' id='lname' value='".$row['lname']."' /></p>";
-  echo "<p>Contact:";
-  echo "<input type='text' id='lname' value='".$row['lname']."' /></p>";
-  echo "<p>Email:";
-  echo "<input type='text' id='lname' value='".$row['lname']."' /></p>";
+	echo "<table>";
+	echo "<tr>";
+		echo "<td>";
+		echo "First Name:</td>";
+		echo "<td>";
+		echo "<input type='text' id='fname' value='".$row['fname']."' />";
+		echo "</td>";
+	echo "</tr>";
+	echo "<tr>";
+		echo "<td>";
+		echo "Last Name:</td>";
+		echo "<td>";
+		echo "<input type='text' id='lname' value='".$row['lname']."' />";
+		echo "</td>";
+	echo "</tr>";
+	echo "<tr>";
+		echo "<td>";
+		echo "Password:</td>";
+		echo "<td>";
+		echo "<input type='password' id='lname' value='".$row['password']."' />";
+		echo "</td>";
+	echo "</tr>";
+	echo "<tr>";
+		echo "<td>";
+		echo "Address:</td>";
+		echo "<td>";
+		echo "<input type='text' id='lname' value='".$row['lname']."' />";
+		echo "</td>";
+	echo "</tr>";
+	echo "<tr>";
+		echo "<td>";
+		echo "Contact:</td>";
+		echo "<td>";
+		echo "<input type='text' id='lname' value='".$row['lname']."' />";
+		echo "</td>";
+	echo "</tr>";
+	echo "<tr>";
+		echo "<td>";
+		echo "Email:</td>";
+		echo "<td>";
+		echo "<input type='text' id='lname' value='".$row['lname']."' />";
+		echo "</td>";
+	echo "</tr>";
 }
-echo "<p> <input type='submit' name='edit' value='Edit'> </p>";
-echo "</form></body></html>";
+echo "<tr><td><input type='submit' name='edit' value='Edit'></td></tr>";
+echo "</table></form>
+<a href='userhome.php'>Back to Home</a></body></html>";
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 	{
@@ -55,7 +73,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 					
 			$sql = "UPDATE users SET password='$pass', fname='$fname', lname='$lname', address='$address', contact='$contact', email='$email', WHERE user='$user')";
 				
-			$result = mysqli_query($conn, $sql);
+			$result = mysql_query($sql);
 			echo "<p>Record Successfully updated. You may now view your updated <a href='userhome.php'>profile</a> </p>";
 		}
 	}
