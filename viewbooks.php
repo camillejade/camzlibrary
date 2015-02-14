@@ -35,7 +35,7 @@ if(isset($_POST['submit']))
 			<td>".$row['copies']."</td>
 			<td>".$row['availability']."</td>
 			<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
-			<td><a href=updatebook.php?bookid=".$row['bookid'].">Delete</a></td>
+			<td><a href=deletebook.php?bookid=".$row['bookid'].">Delete</a></td>
 			</tr>";
 		}
 	}
@@ -61,7 +61,7 @@ else{
 			<td>".$row['copies']."</td>
 			<td>".$row['availability']."</td>
 			<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
-			<td><a href=updatebook.php?bookid=".$row['bookid'].">Delete</a></td>
+			<td><a href=deletebook.php?bookid=".$row['bookid'].">Delete</a></td>
 			</tr>";
 		}
 	}
