@@ -24,11 +24,11 @@ if(isset($_POST['submit']))
 	
 	if(mysql_num_rows($result)>0)
 	{
-		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th>";
+		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th><th># of Copies</th><th>";
 		while($row = mysql_fetch_assoc($result))
 		{
 
-			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td>
+			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td><td>".$row['copies']."</td>
 			<td><a href=updateusers.php?bookid=".$row['bookid'].">Update</a></td>
 			<td><a href=deleteuser.php?bookid=".$row['bookid'].">Delete</a></td></tr>";
 		}
@@ -44,13 +44,13 @@ else{
 	
 	if(mysql_num_rows($result)>0)
 	{
-		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th>";
+		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th><th># of Copies</th>";
 		while($row = mysql_fetch_assoc($result))
 		{
 
-			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td>
-			<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
-			<td><a href=deletebook.php?bookid=".$row['bookid'].">Delete</a></td></tr>";
+			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td><td>".$row['copies']."</td>
+			<td><a href=updateusers.php?bookid=".$row['bookid'].">Update</a></td>
+			<td><a href=deleteuser.php?bookid=".$row['bookid'].">Delete</a></td></tr>";
 		}
 	}
 	else
