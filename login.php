@@ -3,13 +3,12 @@ session_start();
 
 	if($_SERVER['REQUEST_METHOD']=='POST')
 	{	
-		if(empty($_POST['username'])	|| empty($_POST['password']))
+		if(empty($_POST['username']) || empty($_POST['password']))
 		{
-		header("Location: index.html");
+			header("Location: index.php?message=Fields cannot be empty. Please login with a username and password.");
 		}
 		else if(isset($_POST['login']))
 		{
-		
 		include('connect.php');
 		
 		$userhere = mysql_real_escape_string($_POST['username']);
@@ -47,7 +46,7 @@ session_start();
 		}
 		else
 		{
-			echo "Invalid username/password.";
+			header("Location: index.php?message=Invalid username or password. Please try again.");
 		}		
 		mysql_close($conn);
 		}
