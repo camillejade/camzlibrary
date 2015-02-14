@@ -28,7 +28,9 @@ if(isset($_POST['submit']))
 		while($row = mysql_fetch_assoc($result))
 		{
 
-			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td></tr>";
+			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td>
+			<td><a href=updateusers.php?bookid=".$row['bookid'].">Update</a></td>
+			<td><a href=deleteuser.php?bookid=".$row['bookid'].">Delete</a></td></tr>";
 		}
 	}
 	else
@@ -46,7 +48,9 @@ else{
 		while($row = mysql_fetch_assoc($result))
 		{
 
-			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td></tr>";
+			echo "<tr><td>".$row['title']."</td><td>".$row['author']."</td><td>".$row['pubdate']."</td>
+			<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
+			<td><a href=deletebook.php?bookid=".$row['bookid'].">Delete</a></td></tr>";
 		}
 	}
 	else
