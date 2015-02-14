@@ -34,8 +34,8 @@ if(isset($_POST['submit']))
 			<td>".$row['pubdate']."</td>
 			<td>".$row['copies']."</td>
 			<td>".$row['availability']."</td>
-			<td><a href=updateusers.php?bookid=".$row['bookid'].">Update</a></td>
-			<td><a href=deleteuser.php?bookid=".$row['bookid'].">Delete</a></td>
+			<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
+			<td><a href=updatebook.php?bookid=".$row['bookid'].">Delete</a></td>
 			</tr>";
 		}
 	}
@@ -60,8 +60,8 @@ else{
 			<td>".$row['pubdate']."</td>
 			<td>".$row['copies']."</td>
 			<td>".$row['availability']."</td>
-			<td><a href=updateusers.php?bookid=".$row['bookid'].">Update</a></td>
-			<td><a href=deleteuser.php?bookid=".$row['bookid'].">Delete</a></td>
+			<td><a href=updatebook.php?bookid=".$row['bookid'].">Update</a></td>
+			<td><a href=updatebook.php?bookid=".$row['bookid'].">Delete</a></td>
 			</tr>";
 		}
 	}
