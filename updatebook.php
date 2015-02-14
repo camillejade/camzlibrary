@@ -1,8 +1,8 @@
 <?php 
 include('session.php');
 include('connect.php');
-
-$bookid = $_GET['id'];
+	
+$bookid = $_GET['bookid'];
 $sql = "SELECT * from books WHERE bookid = '$bookid'";
 $result = mysql_query($sql);
 $rows = mysql_fetch_array($result);
@@ -43,8 +43,11 @@ $rows = mysql_fetch_array($result);
 			<input name="pubdate" type="text" id="pubdate" value="<?php echo $rows['pubdate']; ?>">
 			</td>
 			<td align="center">
-			<input name="availability" type="text" id="availability" value="<?php echo $rows['availability']; ?>">
-			</td>
+			<select name="availability" id="availability" >
+				<?php echo "<option value='yes'"; if($rows['availability'=='yes']) echo 'selected="selected">Yes</option>
+				<option value="no"'; elseif($rows['availability'=='no']) echo 'selected="selected"';?>>No</option>
+			</select>
+			
 			<td>
 			<input name="copies" type="text" id="copies" value="<?php echo $rows['copies']; ?>" size="15">
 			</td>
