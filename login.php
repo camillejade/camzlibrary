@@ -1,7 +1,6 @@
 <?php 
 session_start();
-
-	if($_SERVER['REQUEST_METHOD']=='POST')
+if($_SERVER['REQUEST_METHOD']=='POST')
 	{	
 		if(empty($_POST['username']) || empty($_POST['password']))
 		{
@@ -9,21 +8,24 @@ session_start();
 		}
 		else if(isset($_POST['login']))
 		{
+	
+		include('session.php');
 		include('connect.php');
 		
-		$userhere = mysql_real_escape_string($_POST['username']);
-		$passhere = mysql_real_escape_string($_POST['password']);
-		$userhere = htmlspecialchars($userhere);
-		$passhere = htmlspecialchars($passhere);
+		$username = mysql_real_escape_string($_POST['username']);
+		$password = mysql_real_escape_string($_POST['password']);
+		$password = md5($password);
+	
+		$_SESSION['login_user']=$username;
 
-		$sql = "SELECT * from users where username='$userhere' and password='$passhere'";
+		$sql = "SELECT * from users where username='$username' and password='$password'";
 		$result = mysql_query($sql);
 
-		if(mysql_num_rows($result) > 0)
+		if(mysql_num_rows($result) == 1)
 		{
-			$_SESSION['login_user']=$userhere;
 			while ($row = mysql_fetch_assoc($result))
 			{
+			if($password==$row['password']){
 				if($row['username']=="admin" && $row['usertype']=="admin")
 				{
 					if(isset($_SESSION['login_user'])) {
@@ -43,11 +45,18 @@ session_start();
 					}
 				}
 			}
+			
+			else
+			{
+				header("Location: index.php?message=Invalid username or password. Please try again.");
+			}
+			}
 		}
 		else
 		{
 			header("Location: index.php?message=Invalid username or password. Please try again.");
-		}		
+		}	
+		
 		mysql_close($conn);
 		}
 }
