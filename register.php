@@ -1,7 +1,3 @@
-<?php
-include('session.php');
-include('connect.php');
-?>
 <html>
 <body>
 Camz Library System
@@ -17,6 +13,8 @@ Camz Library System
 <p>All fields are required</p>
 
 <?php
+include('session.php');
+include('connect.php');
 if($_SERVER['REQUEST_METHOD']=='POST')
 	{
 	if(isset($_POST['save']))
@@ -27,30 +25,18 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 			}
 			else
 			{
-				$servername = 'localhost';
-				$dbusername = 'root';
-				$dbpassword = '';
-				$dbname = "camzlibrary";
 				$user = $_POST['username'];
-				$pass = $_POST['password'];
+				$pass = md5($_POST['password']);
 				$fname = $_POST['fname'];
 				$lname = $_POST['lname'];
 				$address = $_POST['address'];
 				$contact = $_POST['contact'];
 				$email = $_POST['email'];
-				
-				$conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
-
-				if(!$conn)
-				{
-					die("Connection failed". mysqli_connect_error());
-				}
-				//echo "Connected successfully.<br>";
-
+	
 				$sql = "INSERT into users(username, password, fname, lname, address, contact, email, usertype) VALUES ('$user', '$pass', '$fname', '$lname', '$address', '$contact', '$email', 'user')";
 				
-				$result = mysqli_query($conn, $sql);
-				echo "<p>Registration Successful. You may now <a href='index.html'>login</a> to continue.</p>";
+				$result = mysql_query($sql);
+				echo "<p>Registration Successful. You may now <a href='index.php'>login</a> to continue.</p>";
 			}
 		}
 	}
