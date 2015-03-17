@@ -11,7 +11,7 @@ include('session.php');
 	</ul>
 	<p>Books</p>
 	<ul>
-		<li><a href='userbooks.php'>View Books</a></li>
+		<li><a href='userbooks.php'>View All Books</a></li>
 	</ul>
 	<p>Account</p>
 	<ul>

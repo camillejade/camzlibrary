@@ -44,8 +44,8 @@ $rows = mysql_fetch_array($result);
 			</td>
 			<td align="center">
 			<select name="availability" id="availability" >
-				<?php echo "<option value='yes'"; if($rows['availability'=='yes']) echo 'selected="selected">Yes</option>
-				<option value="no"'; elseif($rows['availability'=='no']) echo 'selected="selected"';?>>No</option>
+			<option <?php if ($rows['availability'] == "Yes") echo 'selected';?>  value="Yes">Yes</option>
+			<option <?php if ($rows['availability'] == "No") echo 'selected';?>  value="No">No</option>
 			</select>
 			
 			<td>

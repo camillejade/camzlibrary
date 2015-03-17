@@ -1,11 +1,11 @@
 <?php 
 include('session.php');
+
 ?>
 
 <html>
 <body>
 	<p>Hi, <?php echo $_SESSION['login_user']?></p>
-	<p><a href="logout.php">Logout</a></p>
 	<p>Users</p>
 	<ul>
 		<li><a href="createuser.php">Add User</a></li>
@@ -20,5 +20,7 @@ include('session.php');
 	<ul>
 		<li>Borrow/Return Logs</li>
 	</ul>
+	<p><a href="logout.php">Logout</a></p>
 </body>
 </html>
+.

@@ -29,6 +29,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 				if($row['username']=="admin" && $row['usertype']=="admin")
 				{
 					if(isset($_SESSION['login_user'])) {
+						$_SESSION['name']= $username;
+
 					header("Location: adminhome.php");
 					}
 				}

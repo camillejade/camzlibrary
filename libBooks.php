@@ -1,5 +1,4 @@
 <?php 
-
 include('session.php');
 include('connect.php');
 
@@ -16,6 +15,7 @@ echo "
 	</table>
 	</form>";
 
+	
 if(isset($_POST['submit']))
 {
 	$searchname = $_POST['search'];
@@ -24,13 +24,16 @@ if(isset($_POST['submit']))
 	
 	if(mysql_num_rows($result)>0)
 	{
-		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th>";
+		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th><th># of Copies</th><th>Availability</th>";
 		while($row = mysql_fetch_assoc($result))
 		{
+
 			echo "<tr>
-			<td><a href=userbooks2.php?bookid=".$row['bookid'].">".$row['title']."</td>
+			<td>".$row['title']."</td>
 			<td>".$row['author']."</td>
 			<td>".$row['pubdate']."</td>
+			<td>".$row['copies']."</td>
+			<td>".$row['availability']."</td>
 			</tr>";
 		}
 	}
@@ -45,14 +48,16 @@ else{
 	
 	if(mysql_num_rows($result)>0)
 	{
-		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th>";
+		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th><th># of Copies</th><th>Availability</th>";
 		while($row = mysql_fetch_assoc($result))
 		{
-			
+
 			echo "<tr>
-			<td><a href=userbooks2.php?bookid=".$row['bookid'].">".$row['title']."</td>
+			<td>".$row['title']."</td>
 			<td>".$row['author']."</td>
 			<td>".$row['pubdate']."</td>
+			<td>".$row['copies']."</td>
+			<td>".$row['availability']."</td>
 			</tr>";
 		}
 	}
@@ -63,6 +68,6 @@ else{
 }
 
 echo "</table>";
-echo "<a href='userhome.php'>Back</a>";
+echo "<a href='librarianhome.php'>Back to Home</a>";
 mysql_close($conn);
 ?>
