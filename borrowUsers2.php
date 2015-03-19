@@ -35,8 +35,8 @@ if(isset($_POST['submit']))
 			<td>".$row['pubdate']."</td>
 			<td>".$row['copies']."</td>
 			<td>".$row['availability']."</td>
-			<td><a href=borrowBook.php?bookid=".$row['bookid'].">Borrow</a></td>
-			<td><input type='hidden' name='id' value='$id'></td>
+			<td><a href=borrowBook.php?bookid=".$row['bookid']."&id=$id>Borrow</a></td>
+			<input type='hidden' name='id' value='$id'>
 			</tr>";
 		}
 	}
@@ -61,8 +61,8 @@ else{
 			<td>".$row['pubdate']."</td>
 			<td>".$row['copies']."</td>
 			<td>".$row['availability']."</td>
-			<td><a href=borrowBook.php?bookid=".$row['bookid'].">Borrow</a></td>
-			<td><input type='hidden' name='id' value='$id'></td>
+			<td><a href=borrowBook.php?bookid=".$row['bookid']."&id=$id>Borrow</a></td>
+			<input type='hidden' name='id' value='$id'>
 			</tr>";
 		}
 	}
