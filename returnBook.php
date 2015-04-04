@@ -9,7 +9,13 @@ $result = mysql_query($sql);
 
 if($result)
 {
-	echo "Book successfully returned.";
+
+	$sql5 = "update books set availability = 'yes' where bookid = '$bookid'";
+	$result3 = mysql_query($sql5);
+	if($result3)
+	{
+			echo "Book successfully returned.";
+	}
 	echo "<a href = 'librarianhome.php'>Return to Home</a>";
 }
 else
