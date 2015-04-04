@@ -16,6 +16,8 @@ else
 {
 	$sql4 = "insert into borrowlog(userid, bookid, duedate) values ($id, $bookid, now())";
 	$result2 = mysql_query($sql4);
+	$sql5 = "update books set availability = 'no' where bookid = '$bookid'";
+	$result3 = mysql_query($sql5);
 	echo "<a href='librarianhome.php'>Return to home</a>";
 }
  //insert into 
