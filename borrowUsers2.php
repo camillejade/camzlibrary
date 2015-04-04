@@ -17,7 +17,7 @@ echo "
 	</table>
 	</form>";
 	
-if(isset($_POST['submit']))
+if(isset($_POST['submit']) and isset($_POST['search']))
 {
 	$searchname = $_POST['search'];
 	$sql2 = "SELECT * FROM books WHERE title LIKE '%$searchname%' OR author LIKE '%$searchname%'";
@@ -25,43 +25,26 @@ if(isset($_POST['submit']))
 	
 	if(mysql_num_rows($result)>0)
 	{
-		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th><th># of Copies</th><th>Availability</th>";
+		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th>";
 		while($row = mysql_fetch_assoc($result))
 		{
 
 			echo "<tr>
 			<td>".$row['title']."</td>
 			<td>".$row['author']."</td>
-			<td>".$row['pubdate']."</td>
-			<td>".$row['copies']."</td>
-			<td>".$row['availability']."</td>
-			<td><a href=borrowBook.php?bookid=".$row['bookid']."&id=$id>Borrow</a></td>
-			<input type='hidden' name='id' value='$id'>
-			</tr>";
-		}
-	}
-	else
-	{
-		echo "No books found.";
-	}
-}
-else{
-	$sql2 = "SELECT * FROM books";
-	$result = mysql_query($sql2);
-	
-	if(mysql_num_rows($result)>0)
-	{
-		echo "<table border='1'><th>Title</th><th>Author</th><th>Publish Date</th><th># of Copies</th><th>Availability</th>";
-		while($row = mysql_fetch_assoc($result))
-		{
-
-			echo "<tr>
-			<td>".$row['title']."</td>
-			<td>".$row['author']."</td>
-			<td>".$row['pubdate']."</td>
-			<td>".$row['copies']."</td>
-			<td>".$row['availability']."</td>
-			<td><a href=borrowBook.php?bookid=".$row['bookid']."&id=$id>Borrow</a></td>
+			<td>".$row['pubdate']."</td>";
+			$bookid = $row['bookid'];
+			$sql3= "SELECT * FROM borrowlog WHERE userid = '$id' and bookid = '$bookid'";
+			$result2 = mysql_query($sql3);
+			
+			if(mysql_num_rows($result2)>0)
+			{
+			echo "<td><a href=returnBook.php?bookid=".$row['bookid']."&id=$id>Return</a></td>";
+			}
+			else{
+			echo "<td><a href=borrowBook.php?bookid=".$row['bookid']."&id=$id>Borrow</a></td>";
+			}
+			echo "
 			<input type='hidden' name='id' value='$id'>
 			</tr>";
 		}
