@@ -26,9 +26,6 @@ if($result>0)
 			<td><b>Description</b></td>
 			<td>".$rows['bookDesc']."</td>
 		</tr>
-		<tr>
-			<td><input type=submit name=submit value='Reserve'></td>
-		</tr>
 		</table>
 		</form>
 		";
